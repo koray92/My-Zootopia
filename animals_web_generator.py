@@ -8,22 +8,26 @@ def load_data(file_path):
 animals_data = load_data("animals_data.json")
 
 def get_animal_name():
-    output = []
+    output = ""
     for i in animals_data:
         skip_type = i.get("characteristics", {}).get("type", "Unknown")
         if skip_type == "Unknown":
-            output.append(f"Name: {i["name"]}\n"
-                          f"Diet: {i["characteristics"]["diet"]}\n"
-                          f"Location: {i["locations"][0]}")
+            output += '<li class="cards__item">'
+            output += f"Name: {i["name"]}<br/>\n"
+            output += f"Diet: {i["characteristics"]["diet"]}<br/>\n"
+            output += f"Location: {i["locations"][0]}"
+            output += "</li>"
 
         else:
-            output.append(f"Name: {i["name"]}\n"
-                          f"Diet: {i["characteristics"]["diet"]}\n"
-                          f"Location: {i["locations"][0]}\n"
-                          f"Type: {i["characteristics"]["type"]}")
+            output += '<li class="cards__item">'
+            output += f"Name: {i["name"]}<br/>\n"
+            output += f"Diet: {i["characteristics"]["diet"]}<br/>\n"
+            output += f"Location: {i["locations"][0]}<br/>\n"
+            output += f"Type: {i["characteristics"]["type"]}<br/>\n"
+            output += "</li>"
 
-    result = "\n\n".join(output)
-    return result
+    return output
+
 
 
 def read_html(file_path):
@@ -39,3 +43,4 @@ new_html = html_file.replace("__REPLACE_ANIMALS_INFO__", animals_str)
 
 with open("animals.html", "w") as f:
     f.write(new_html)
+
