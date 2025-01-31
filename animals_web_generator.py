@@ -12,18 +12,22 @@ def get_animal_name():
     for i in animals_data:
         skip_type = i.get("characteristics", {}).get("type", "Unknown")
         if skip_type == "Unknown":
-            output += '<li class="cards__item">'
-            output += f"Name: {i["name"]}<br/>\n"
-            output += f"Diet: {i["characteristics"]["diet"]}<br/>\n"
-            output += f"Location: {i["locations"][0]}"
+            output += "<li class='cards__item'>\n"
+            output += f"  <div class='card_title'>{i['name']}</div>\n"
+            output += "   <p class='card__text'>"
+            output += f"      <strong>Diet:</strong> {i['characteristics']['diet']}<br/>\n"
+            output += f"      <strong>Location:</strong> {i['locations'][0]}<br/>\n"
+            output += "   </p>"
             output += "</li>"
 
         else:
-            output += '<li class="cards__item">'
-            output += f"Name: {i["name"]}<br/>\n"
-            output += f"Diet: {i["characteristics"]["diet"]}<br/>\n"
-            output += f"Location: {i["locations"][0]}<br/>\n"
-            output += f"Type: {i["characteristics"]["type"]}<br/>\n"
+            output += "<li class='cards__item'>\n"
+            output += f"  <div class='card_title'> {i['name']}</div>\n"
+            output += "   <p class='card__text'>\n"
+            output += f"      <strong>Diet:</strong> {i['characteristics']['diet']}<br/>\n"
+            output += f"      <strong>Location:</strong> {i['locations'][0]}<br/>\n"
+            output += f"      <strong>Type:</strong> {i['characteristics']['type']}<br/>\n"
+            output += "   </p>"
             output += "</li>"
 
     return output
